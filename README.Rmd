@@ -18,8 +18,8 @@ output: html_document
 
 ## Working environment
 
-```{r env}
-suppressPackageStartupMessages(library("MSnbase"))
+```{r env, message = FALSE}
+library("MSnbase")
 library("pRoloc")
 library("pRolocdata")
 setStockcol(NULL)
