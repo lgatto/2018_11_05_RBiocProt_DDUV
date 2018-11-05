@@ -5,6 +5,8 @@ date: "11/5/2018"
 output: html_document
 ---
 
+> Find this documet at [https://github.com/lgatto/2018_11_05_RBiocProt_DDUV](https://github.com/lgatto/2018_11_05_RBiocProt_DDUV)
+
 # Introduction
 
 1. Use case: Quantitative MS-based spatial proteomics (intro from
@@ -407,7 +409,7 @@ processingData(svmres)
 ```
 ## - - - Processing information - - -
 ## Added markers from  'mrk' marker vector. Thu Jul 16 22:53:44 2015 
-## Performed svm prediction (sigma=0.1 cost=0.5) Mon Nov  5 09:40:24 2018 
+## Performed svm prediction (sigma=0.1 cost=0.5) Mon Nov  5 09:46:27 2018 
 ##  MSnbase version: 1.17.12
 ```
 
