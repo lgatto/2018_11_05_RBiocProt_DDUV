@@ -319,8 +319,8 @@ $(document).ready(function () {
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <ol style="list-style-type: decimal">
-<li>Use case: Quantitative MS-based spatial proteomics (intro from <a href="https://zenodo.org/record/1435058">https://zenodo.org/record/1435058</a>]</li>
-<li><a href="http://lgatto.github.io/pRoloc/articles/Figures/msnset.png">Data structure</a></li>
+<li>Use case: Quantitative MS-based spatial proteomics (intro from <a href="https://zenodo.org/record/1435058">https://zenodo.org/record/1435058</a>).</li>
+<li><a href="http://lgatto.github.io/pRoloc/articles/Figures/msnset.png">Data structure</a>.</li>
 </ol>
 </div>
 <div id="demo" class="section level1">
@@ -328,11 +328,31 @@ $(document).ready(function () {
 <div id="working-environment" class="section level2">
 <h2>Working environment</h2>
 <pre class="r"><code>suppressPackageStartupMessages(library(&quot;MSnbase&quot;))
-library(&quot;pRoloc&quot;)
-library(&quot;pRolocdata&quot;)
-setStockcol(NULL)
-library(&quot;pRolocGUI&quot;)
-library(&quot;magrittr&quot;)</code></pre>
+library(&quot;pRoloc&quot;)</code></pre>
+<pre><code>## Loading required package: MLInterfaces</code></pre>
+<pre><code>## Loading required package: annotate</code></pre>
+<pre><code>## Loading required package: AnnotationDbi</code></pre>
+<pre><code>## Loading required package: IRanges</code></pre>
+<pre><code>## Loading required package: XML</code></pre>
+<pre><code>## 
+## Attaching package: &#39;annotate&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:mzR&#39;:
+## 
+##     nChrom</code></pre>
+<pre><code>## Loading required package: cluster</code></pre>
+<pre><code>## Loading required package: BiocParallel</code></pre>
+<pre><code>## 
+## This is pRoloc version 1.23.1 
+##   Visit https://lgatto.github.io/pRoloc/ to get started.</code></pre>
+<pre class="r"><code>library(&quot;pRolocdata&quot;)</code></pre>
+<pre><code>## 
+## This is pRolocdata version 1.20.0.
+## Use &#39;pRolocdata()&#39; to list available data sets.</code></pre>
+<pre class="r"><code>setStockcol(NULL)
+library(&quot;pRolocGUI&quot;)</code></pre>
+<pre><code>## 
+## This is pRolocGUI version 1.16.0</code></pre>
+<pre class="r"><code>library(&quot;magrittr&quot;)</code></pre>
 </div>
 <div id="loading-data-into-r" class="section level2">
 <h2>Loading data into R</h2>
@@ -636,7 +656,7 @@ fvarLabels(svmres)</code></pre>
 processingData(svmres)</code></pre>
 <pre><code>## - - - Processing information - - -
 ## Added markers from  &#39;mrk&#39; marker vector. Thu Jul 16 22:53:44 2015 
-## Performed svm prediction (sigma=0.1 cost=0.5) Mon Nov  5 09:46:27 2018 
+## Performed svm prediction (sigma=0.1 cost=0.5) Mon Nov  5 09:48:50 2018 
 ##  MSnbase version: 1.17.12</code></pre>
 <pre class="r"><code>fvarLabels(svmres)</code></pre>
 <pre><code>##  [1] &quot;FBgn&quot;                  &quot;Protein.ID&quot;           

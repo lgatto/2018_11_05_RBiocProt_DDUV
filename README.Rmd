@@ -10,8 +10,8 @@ output: html_document
 # Introduction
 
 1. Use case: Quantitative MS-based spatial proteomics (intro from
-   [https://zenodo.org/record/1435058](https://zenodo.org/record/1435058)]
-2. [Data structure](http://lgatto.github.io/pRoloc/articles/Figures/msnset.png)
+   [https://zenodo.org/record/1435058](https://zenodo.org/record/1435058)).
+2. [Data structure](http://lgatto.github.io/pRoloc/articles/Figures/msnset.png).
 
 
 # Demo

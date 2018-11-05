@@ -10,8 +10,8 @@ output: html_document
 # Introduction
 
 1. Use case: Quantitative MS-based spatial proteomics (intro from
-   [https://zenodo.org/record/1435058](https://zenodo.org/record/1435058)]
-2. [Data structure](http://lgatto.github.io/pRoloc/articles/Figures/msnset.png)
+   [https://zenodo.org/record/1435058](https://zenodo.org/record/1435058)).
+2. [Data structure](http://lgatto.github.io/pRoloc/articles/Figures/msnset.png).
 
 
 # Demo
@@ -22,9 +22,74 @@ output: html_document
 ```r
 suppressPackageStartupMessages(library("MSnbase"))
 library("pRoloc")
+```
+
+```
+## Loading required package: MLInterfaces
+```
+
+```
+## Loading required package: annotate
+```
+
+```
+## Loading required package: AnnotationDbi
+```
+
+```
+## Loading required package: IRanges
+```
+
+```
+## Loading required package: XML
+```
+
+```
+## 
+## Attaching package: 'annotate'
+```
+
+```
+## The following object is masked from 'package:mzR':
+## 
+##     nChrom
+```
+
+```
+## Loading required package: cluster
+```
+
+```
+## Loading required package: BiocParallel
+```
+
+```
+## 
+## This is pRoloc version 1.23.1 
+##   Visit https://lgatto.github.io/pRoloc/ to get started.
+```
+
+```r
 library("pRolocdata")
+```
+
+```
+## 
+## This is pRolocdata version 1.20.0.
+## Use 'pRolocdata()' to list available data sets.
+```
+
+```r
 setStockcol(NULL)
 library("pRolocGUI")
+```
+
+```
+## 
+## This is pRolocGUI version 1.16.0
+```
+
+```r
 library("magrittr")
 ```
 
@@ -409,7 +474,7 @@ processingData(svmres)
 ```
 ## - - - Processing information - - -
 ## Added markers from  'mrk' marker vector. Thu Jul 16 22:53:44 2015 
-## Performed svm prediction (sigma=0.1 cost=0.5) Mon Nov  5 09:46:27 2018 
+## Performed svm prediction (sigma=0.1 cost=0.5) Mon Nov  5 09:48:50 2018 
 ##  MSnbase version: 1.17.12
 ```
 
