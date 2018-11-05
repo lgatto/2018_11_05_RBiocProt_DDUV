@@ -1,0 +1,162 @@
+---
+title: "R/Bioconductor tools for reproducible proteomics data analysis"
+author: "Laurent Gatto"
+date: "11/5/2018"
+output: html_document
+---
+
+# Introduction
+
+1. Use case: Quantitative MS-based spatial proteomics (intro from
+   [https://zenodo.org/record/1435058](https://zenodo.org/record/1435058)]
+2. [Data structure](http://lgatto.github.io/pRoloc/articles/Figures/msnset.png)
+
+
+# Demo
+
+## Working environment
+
+```{r env}
+suppressPackageStartupMessages(library("MSnbase"))
+library("pRoloc")
+library("pRolocdata")
+setStockcol(NULL)
+library("pRolocGUI")
+library("magrittr")
+```
+
+## Loading data into R
+
+```{r in}
+f0 <- dir(system.file("extdata", package = "pRolocdata"),
+	  full.names = TRUE,
+	  pattern = "Dunkley2006")
+basename(f0)
+
+res <- readMSnSet2(f0, ecol = 5:20)
+res
+```
+
+## Accessing data and meta-data
+
+
+```{r slots}
+data(hyperLOPIT2015)
+x <- hyperLOPIT2015
+exprs(x)
+pData(x)
+fData(x)
+```
+
+## Missing data
+
+```{r na}
+data(naset)
+naplot(naset)
+
+filterNA(naset, pNA = 0.5) %>%
+    naplot
+
+naset %>%
+    filterNA( pNA = 0.5) %>%
+    impute(method = "knn") %>%
+    naplot
+
+res <- naset %>%
+    filterNA( pNA = 0.5) %>%
+    impute(method = "knn")
+```
+
+## Normalisation
+
+```{r norm}
+par(mfrow = c(1, 2))
+boxplot(exprs(res))
+
+res %>%
+    normalise(method = "vsn") %>%
+    exprs %>%
+    boxplot
+```
+
+## Dimensionality reduction
+
+```{r pca}
+hl <- hyperLOPIT2015
+plot2D(hl)
+
+
+fvarLabels(hl)
+plot2D(hl, fcol = "final.assignment")
+
+ptz <- exp(fData(hl)$svm.score) - 1
+plot2D(hl, fcol = "final.assignment", cex = ptz)
+
+setStockcol(paste0(getStockcol(), 80))
+plot2D(hl, fcol = "final.assignment", cex = ptz)
+```
+
+## Classification
+
+```{r class}
+data(tan2009r1)
+
+## params <- svmOptimisation(tan2009r1, fcol = "markers.orig",
+##               times = 100, xval = 5,
+##               verbose = FALSE)
+
+fn <- dir(system.file("extdata", package = "pRoloc"),
+      full.names = TRUE, pattern = "params.rda")
+load(fn, verbose = TRUE)
+params
+
+plot(params)
+levelPlot(params)
+
+svmres <- svmClassification(tan2009r1, fcol = "markers.orig",
+			    sigma = 1, cost = 1)
+fvarLabels(svmres)
+
+svmres <- svmClassification(tan2009r1, fcol = "markers.orig",
+			    assessRes = params)
+processingData(svmres)
+fvarLabels(svmres)
+```
+
+## Interactive visualisation
+
+
+Offline
+
+```{r gui, eval = FALSE}
+pRolocVis(hl)
+```
+
+or online at [https://lgatto.shinyapps.io/christoforou2015/](https://lgatto.shinyapps.io/christoforou2015/).
+
+# References
+
+Breckels LM, Mulvey CM, Lilley KS and Gatto L. **A Bioconductor
+workflow for processing and analysing spatial proteomics data**
+[version 2; referees: 2 approved]. F1000Research 2018, 5:2926
+(https://doi.org/10.12688/f1000research.10411.2)
+
+`pRoloc` documentation: http://lgatto.github.io/pRoloc/
+
+Gatto L, Lilley KS. MSnbase-an R/Bioconductor package for isobaric
+tagged mass spectrometry data visualization, processing and
+quantitation. Bioinformatics.  2012 Jan 15;28(2):288-9. doi:
+10.1093/bioinformatics/btr645. Epub 2011 Nov 22.  PubMed PMID:
+22113085.
+
+`MSnbase` documentation: http://lgatto.github.io/MSnbase/
+
+Gatto L, Breckels LM, Naake T, Gibb S. **Visualization of proteomics
+data using R and bioconductor**. Proteomics. 2015
+Apr;15(8):1375-89. doi: 10.1002/pmic.201400392. Review. PubMed PMID:
+25690415; PubMed Central PMCID: PMC4510819.
+
+Gatto L, Christoforou A. **Using R and Bioconductor for proteomics
+data analysis**. Biochim Biophys Acta. 2014 Jan;1844(1 Pt
+A):42-51. doi: 10.1016/j.bbapap.2013.04.032. Epub 2013
+May 18. Review. PubMed PMID: 23692960.
